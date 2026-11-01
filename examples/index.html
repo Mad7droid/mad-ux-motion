@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Interactive UX Motion examples. Tune timing, easing, and distance, then copy a prompt for your coding agent."
+      content="A considered collection of UI motion examples. Tune, try, and take the recipe with you. Light and dark themes included."
     />
     <title>Feedback · UX Motion playground</title>
+    <script src="theme.js"></script>
     <link rel="stylesheet" href="styles.css" />
     <script src="app.js" defer></script>
   </head>
@@ -15,228 +16,753 @@
     <a class="skip" href="#main">Skip to examples</a>
     <aside class="sidebar">
       <a class="brand" href="index.html"
-        ><span class="brand-mark" aria-hidden="true">m<span>↗</span></span
-        >ux / motion</a
-      >
-      <p class="sidebar-caption">THE INTERACTION PLAYGROUND</p>
-      <nav aria-label="Example categories">
-        <a href="index.html" aria-current="page"
-          ><span>01</span>Feedback<span aria-hidden="true">↗</span></a
-        ><a href="surfaces.html"
-          ><span>02</span>Surfaces<span aria-hidden="true">↗</span></a
-        ><a href="gestures.html"
-          ><span>03</span>Gestures<span aria-hidden="true">↗</span></a
+        ><svg
+          class="icon"
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.6"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
         >
-      </nav>
+          <path d="M4 16V8m5 11V5m5 13V6m5 9V9" /></svg
+        ><span>UX Motion</span></a
+      >
+      <div class="nav-section">
+        <span class="nav-label">PLAYGROUND</span>
+        <nav aria-label="Example categories">
+          <a href="index.html" aria-current="page"
+            ><span>Feedback</span><span class="nav-count">01</span></a
+          ><a href="surfaces.html"
+            ><span>Surfaces</span><span class="nav-count">02</span></a
+          ><a href="gestures.html"
+            ><span>Gestures</span><span class="nav-count">03</span></a
+          >
+        </nav>
+      </div>
+      <div class="sidebar-guide">
+        <span class="nav-label">RESOURCES</span
+        ><a
+          href="https://github.com/Mad7droid/mad-ux-motion/blob/main/docs/usage.md"
+          >Usage guide
+          <svg
+            class="icon"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M7 17 17 7M7 7h10v10" /></svg></a
+        ><a
+          href="https://github.com/Mad7droid/mad-ux-motion/blob/main/skills/ux-motion/SKILL.md"
+          >The skill
+          <svg
+            class="icon"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M7 17 17 7M7 7h10v10" /></svg
+        ></a>
+      </div>
       <div class="sidebar-bottom">
-        <p>A small field guide to<br />motion that earns its place.</p>
-        <a href="https://github.com/Mad7droid/mad-ux-motion"
-          >View the skill on GitHub ↗</a
-        ><span>BY MAD7DROID · OPEN SOURCE</span>
+        <span class="sidebar-signature"
+          >Considered motion.<br />Useful by default.</span
+        ><a href="https://github.com/Mad7droid/mad-ux-motion"
+          ><svg
+            class="icon"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path
+              d="M9 19c-5 1-5-2-7-2m14 5v-4a3.5 3.5 0 0 0-1-3c3-.3 6-1.5 6-5a4.8 4.8 0 0 0-1-3.4A4.5 4.5 0 0 0 20 3s-1-.3-4 1.5a14 14 0 0 0-8 0C5 2.7 4 3 4 3a4.5 4.5 0 0 0 0 3.6A4.8 4.8 0 0 0 3 10c0 3.5 3 4.7 6 5a3.5 3.5 0 0 0-1 3v4"
+            /></svg
+          >mad-ux-motion
+          <svg
+            class="icon"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M7 17 17 7M7 7h10v10" /></svg></a
+        ><span class="credit">An open source skill by Mad7droid</span>
       </div>
     </aside>
+    <header class="topbar">
+      <div class="breadcrumb">
+        <a href="index.html">Playground</a><span>/</span><span>Feedback</span>
+      </div>
+      <div class="topbar-actions">
+        <a class="github-link" href="https://github.com/Mad7droid/mad-ux-motion"
+          >View on GitHub
+          <svg
+            class="icon"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M7 17 17 7M7 7h10v10" /></svg
+        ></a>
+        <div class="theme-control" role="group" aria-label="Appearance">
+          <button
+            type="button"
+            data-theme-choice="system"
+            aria-label="System theme"
+            title="System theme"
+            aria-pressed="false"
+          >
+            <svg
+              class="icon"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <rect x="3" y="4" width="18" height="13" rx="2" />
+              <path d="M8 21h8m-4-4v4" />
+            </svg></button
+          ><button
+            type="button"
+            data-theme-choice="light"
+            aria-label="Light theme"
+            title="Light theme"
+            aria-pressed="false"
+          >
+            <svg
+              class="icon"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="12" r="4" />
+              <path
+                d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"
+              />
+            </svg></button
+          ><button
+            type="button"
+            data-theme-choice="dark"
+            aria-label="Dark theme"
+            title="Dark theme"
+            aria-pressed="false"
+          >
+            <svg
+              class="icon"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M20 14A8.5 8.5 0 0 1 10 4a8.5 8.5 0 1 0 10 10Z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
     <main id="main">
-      <header class="topline">
-        <span>UX MOTION <span class="slash">/</span> LIVE EXAMPLES</span
-        ><span class="live-badge"
-          ><span class="tiny-dot"></span> No dependencies. Just
-          interaction.</span
-        >
-      </header>
       <section class="intro">
-        <div>
-          <p class="eyebrow">FEEL THE DIFFERENCE</p>
-          <h1>Small actions.<br />Clear responses.</h1>
-          <p class="lede">
-            Make an action feel acknowledged without making anyone wait.
-          </p>
+        <div class="collection-label">
+          INTERACTION COLLECTION <span>/ 01</span>
         </div>
-        <div class="intro-note">
-          <span aria-hidden="true">↳</span>
-          <p>Try it. Tune it.<br />Take the prompt with you.</p>
-        </div>
+        <h1>Feedback</h1>
+        <p class="lede">
+          Make every action feel acknowledged. Explore press responses and
+          status updates that stay out of the way.
+        </p>
       </section>
-      <section class="controls" aria-label="Motion configuration">
-        <div class="control duration-control">
-          <label for="duration"
-            >Duration
-            <output for="duration" id="duration-value">160 ms</output></label
-          ><input
-            id="duration"
-            type="range"
-            min="80"
-            max="400"
-            step="10"
-            value="160"
-          />
+      <section class="configuration">
+        <div class="configuration-heading">
+          <h2>Motion settings</h2>
+          <button class="reset-controls" id="reset-controls">
+            <svg
+              class="icon"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M3 11a9 9 0 1 1 2 7M3 4v7h7" /></svg
+            >Reset
+          </button>
         </div>
-        <div class="control">
-          <label for="easing">Easing</label
-          ><select id="easing">
-            <option value="enter">Decelerate / accelerate</option>
-            <option value="standard">Standard</option>
-            <option value="linear">Linear · compare</option>
-          </select>
+        <div class="controls" aria-label="Motion configuration">
+          <div class="control">
+            <label for="duration"
+              >Duration
+              <output for="duration" id="duration-value">160 ms</output></label
+            ><input
+              id="duration"
+              type="range"
+              min="80"
+              max="400"
+              step="10"
+              value="160"
+            />
+          </div>
+          <div class="control">
+            <label for="easing">Easing</label
+            ><select id="easing">
+              <option value="enter">Decelerate / accelerate</option>
+              <option value="standard">Standard</option>
+              <option value="linear">Linear · compare</option>
+            </select>
+          </div>
+          <div class="control">
+            <label for="distance"
+              >Toast travel
+              <output for="distance" id="distance-value">12 px</output></label
+            ><input
+              id="distance"
+              type="range"
+              min="0"
+              max="32"
+              step="2"
+              value="12"
+            />
+          </div>
+          <div class="control">
+            <label for="motion">Motion preference</label
+            ><select id="motion">
+              <option value="system">Follow system</option>
+              <option value="reduce">Reduce motion</option>
+            </select>
+          </div>
         </div>
-        <div class="control">
-          <label for="distance"
-            >Travel
-            <output for="distance" id="distance-value">12 px</output></label
-          ><input
-            id="distance"
-            type="range"
-            min="0"
-            max="32"
-            step="2"
-            value="12"
-          />
-        </div>
-        <div class="control">
-          <label for="motion">Motion preference</label
-          ><select id="motion">
-            <option value="system">Follow system</option>
-            <option value="reduce">Reduce motion</option>
-          </select>
-        </div>
+        <p class="config-note">
+          <span class="status-dot"></span
+          ><span id="motion-status">Following your system preference.</span>
+        </p>
       </section>
-      <p class="config-note">
-        <span id="motion-status">Following your system preference.</span>
-        Controls update the demos, prompts, and CSS. Project tokens always win.
-      </p>
       <section class="examples" aria-label="Interactive examples">
         <article class="example" data-example="press" id="example-press">
           <div class="example-heading">
-            <div>
-              <span class="eyebrow">EXPERIMENT 01</span>
-              <h2>Press feedback</h2>
+            <h2>Press feedback</h2>
+            <span class="implementation-label">Transform + color</span>
+          </div>
+          <p class="example-description">
+            Immediate response, without the extra movement.
+          </p>
+          <div class="preview-window">
+            <div class="preview-toolbar">
+              <span>Preview</span
+              ><span class="preview-live"
+                ><span class="status-dot"></span>Interactive</span
+              >
             </div>
-            <span class="example-number">01</span>
-          </div>
-          <p>A little give. An immediate answer.</p>
-          <div class="preview">
-            <button class="primary press-target" id="save-button">
-              Save changes <span aria-hidden="true">↗</span>
-            </button>
-            <p class="demo-status" id="save-status" role="status">
-              Ready when you are.
-            </p>
-          </div>
-          <div class="preview-caption">
-            <span class="tiny-dot"></span>Color + scale · no positioning
-            transforms
+            <div class="preview preview-press">
+              <div class="mini-app settings-preview">
+                <div class="mini-header">
+                  <span class="mini-title">Workspace settings</span
+                  ><span class="small-label">General</span>
+                </div>
+                <div class="mini-body">
+                  <label for="project-name">Project name</label
+                  ><input
+                    id="project-name"
+                    value="Motion library"
+                    autocomplete="off"
+                  /><label>Workspace address</label>
+                  <div class="readonly-field">
+                    <span>acme.design /</span> motion-library
+                  </div>
+                </div>
+                <div class="mini-footer">
+                  <span class="demo-status" id="save-status" role="status"
+                    >Ready to save</span
+                  ><button class="primary press-target" id="save-button">
+                    <svg
+                      class="icon"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="m5 12 4 4L19 6" /></svg
+                    >Save changes
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
           <details class="recipe">
             <summary>
-              Prompt &amp; CSS recipe <span aria-hidden="true">+</span>
+              <span
+                ><svg
+                  class="icon"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="m8 6-6 6 6 6m8-12 6 6-6 6m-3-16-2 20" /></svg
+                >Prompt &amp; CSS recipe</span
+              ><svg
+                class="icon"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="m8 10 4 4 4-4" />
+              </svg>
             </summary>
             <div class="recipe-body">
-              <label for="prompt-press">Copy into your coding agent</label
-              ><textarea
+              <div class="recipe-label">
+                <label for="prompt-press">Agent prompt</label
+                ><button class="copy" data-copy="prompt-press">
+                  <svg
+                    class="icon"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <rect x="8" y="8" width="12" height="13" rx="2" />
+                    <path
+                      d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"
+                    /></svg
+                  >Copy prompt
+                </button>
+              </div>
+              <textarea
                 id="prompt-press"
                 class="prompt"
                 readonly
-                rows="6"
+                rows="7"
                 spellcheck="false"
-              ></textarea
-              ><button class="copy" data-copy="prompt-press">
-                Copy prompt <span aria-hidden="true">↗</span></button
-              ><label for="code-press"
-                >Motion CSS · component behavior stays in app.js</label
-              ><textarea
+              ></textarea>
+              <div class="recipe-label">
+                <label for="code-press">Motion CSS</label
+                ><button class="copy" data-copy="code-press">
+                  <svg
+                    class="icon"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <rect x="8" y="8" width="12" height="13" rx="2" />
+                    <path
+                      d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"
+                    /></svg
+                  >Copy CSS
+                </button>
+              </div>
+              <textarea
                 id="code-press"
                 class="code"
                 readonly
                 rows="7"
                 spellcheck="false"
-              ></textarea
-              ><button class="copy" data-copy="code-press">
-                Copy CSS <span aria-hidden="true">↗</span>
-              </button>
+              ></textarea>
+              <p class="recipe-note">
+                CSS handles the motion. State and interaction logic live in
+                <a href="app.js">app.js</a>.
+              </p>
             </div>
           </details>
         </article>
         <article class="example" data-example="toast" id="example-toast">
           <div class="example-heading">
-            <div>
-              <span class="eyebrow">EXPERIMENT 02</span>
-              <h2>Status toast</h2>
-            </div>
-            <span class="example-number">02</span>
+            <h2>Status toast</h2>
+            <span class="implementation-label">Opacity + translate</span>
           </div>
-          <p>Confirm the result. Keep the next action available.</p>
-          <div class="preview">
-            <button id="toast-trigger">
-              Publish a draft <span aria-hidden="true">↗</span>
-            </button>
-            <div class="toast" id="toast" inert>
-              <span class="status-dot"></span><span>Draft published</span
-              ><button id="toast-close" aria-label="Dismiss notification">
-                ×
-              </button>
+          <p class="example-description">
+            Confirmation that never interrupts the next action.
+          </p>
+          <div class="preview-window">
+            <div class="preview-toolbar">
+              <span>Preview</span
+              ><span class="preview-live"
+                ><span class="status-dot"></span>Interactive</span
+              >
             </div>
-            <span class="sr-only" id="toast-announcement" role="status"></span>
-          </div>
-          <div class="preview-caption">
-            <span class="tiny-dot"></span>Opacity + translate · explicit
-            dismissal
+            <div class="preview preview-toast">
+              <div class="mini-app publication-preview">
+                <div class="mini-header">
+                  <span class="mini-title">Publication</span
+                  ><span class="small-label">Article</span>
+                </div>
+                <div class="mini-body">
+                  <div class="document-row">
+                    <span class="document-icon"
+                      ><svg
+                        class="icon"
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.6"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <path
+                          d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9Z"
+                        />
+                        <path d="M14 3v6h6M8 13h8m-8 4h5" /></svg
+                    ></span>
+                    <div>
+                      <strong>A guide to considered motion</strong
+                      ><span>Edited just now · 4 min read</span>
+                    </div>
+                  </div>
+                  <div class="article-lines" aria-hidden="true">
+                    <i></i><i></i><i></i>
+                  </div>
+                </div>
+                <div class="mini-footer">
+                  <span class="document-state" id="publication-state"
+                    ><span class="status-dot"></span>Draft</span
+                  ><button class="primary" id="toast-trigger">
+                    Publish a draft
+                    <svg
+                      class="icon"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M7 17 17 7M7 7h10v10" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <div class="toast" id="toast" inert>
+                <span class="toast-check"
+                  ><svg
+                    class="icon"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="m5 12 4 4L19 6" /></svg
+                ></span>
+                <div>
+                  <strong>Draft published</strong
+                  ><span>Your article is ready to share.</span>
+                </div>
+                <button
+                  class="icon-button"
+                  id="toast-close"
+                  aria-label="Dismiss notification"
+                >
+                  <svg
+                    class="icon"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="m6 6 12 12M6 18 18 6" />
+                  </svg>
+                </button>
+              </div>
+              <span
+                class="sr-only"
+                id="toast-announcement"
+                role="status"
+              ></span>
+            </div>
           </div>
           <details class="recipe">
             <summary>
-              Prompt &amp; CSS recipe <span aria-hidden="true">+</span>
+              <span
+                ><svg
+                  class="icon"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="m8 6-6 6 6 6m8-12 6 6-6 6m-3-16-2 20" /></svg
+                >Prompt &amp; CSS recipe</span
+              ><svg
+                class="icon"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="m8 10 4 4 4-4" />
+              </svg>
             </summary>
             <div class="recipe-body">
-              <label for="prompt-toast">Copy into your coding agent</label
-              ><textarea
+              <div class="recipe-label">
+                <label for="prompt-toast">Agent prompt</label
+                ><button class="copy" data-copy="prompt-toast">
+                  <svg
+                    class="icon"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <rect x="8" y="8" width="12" height="13" rx="2" />
+                    <path
+                      d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"
+                    /></svg
+                  >Copy prompt
+                </button>
+              </div>
+              <textarea
                 id="prompt-toast"
                 class="prompt"
                 readonly
-                rows="6"
+                rows="7"
                 spellcheck="false"
-              ></textarea
-              ><button class="copy" data-copy="prompt-toast">
-                Copy prompt <span aria-hidden="true">↗</span></button
-              ><label for="code-toast"
-                >Motion CSS · component behavior stays in app.js</label
-              ><textarea
+              ></textarea>
+              <div class="recipe-label">
+                <label for="code-toast">Motion CSS</label
+                ><button class="copy" data-copy="code-toast">
+                  <svg
+                    class="icon"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <rect x="8" y="8" width="12" height="13" rx="2" />
+                    <path
+                      d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"
+                    /></svg
+                  >Copy CSS
+                </button>
+              </div>
+              <textarea
                 id="code-toast"
                 class="code"
                 readonly
                 rows="7"
                 spellcheck="false"
-              ></textarea
-              ><button class="copy" data-copy="code-toast">
-                Copy CSS <span aria-hidden="true">↗</span>
-              </button>
+              ></textarea>
+              <p class="recipe-note">
+                CSS handles the motion. State and interaction logic live in
+                <a href="app.js">app.js</a>.
+              </p>
             </div>
           </details>
         </article>
       </section>
-      <section class="field-note">
-        <span class="eyebrow">A NOTE ON THE NUMBERS</span>
+      <aside class="field-note">
+        <div>
+          <svg
+            class="icon"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M4 16V8m5 11V5m5 13V6m5 9V9" /></svg
+          ><strong>A starting point, not a rule.</strong>
+        </div>
         <p>
-          120–180ms is a starting point, not a rule. Slow things down to inspect
-          them. Keep the motion only when it helps explain what changed.
+          Functional UI usually settles around 120–180ms. Slow it down to
+          inspect it, and let your project's motion tokens lead.
         </p>
         <a
           href="https://github.com/Mad7droid/mad-ux-motion/blob/main/docs/usage.md"
-          >Read the usage guide ↗</a
-        >
-      </section>
+          >Read the usage guide
+          <svg
+            class="icon"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M7 17 17 7M7 7h10v10" /></svg
+        ></a>
+      </aside>
       <footer>
-        <span>Made to be tried, not just watched.</span
-        ><span>UX MOTION / FEEDBACK</span>
+        <span>Six interactions. No runtime dependencies.</span
+        ><span>Try → tune → copy.</span>
       </footer>
     </main>
     <dialog id="settings-dialog" aria-labelledby="dialog-title">
       <form method="dialog">
-        <div class="dialog-icon" aria-hidden="true">↗</div>
-        <p class="eyebrow">PROJECT SETTINGS</p>
-        <h2 id="dialog-title">Make room for focus.</h2>
-        <p>
-          This is a real modal dialog. Try Tab, Escape, or the close button.
-          Focus returns to the trigger.
-        </p>
-        <button class="primary">Done, back to work</button>
+        <div class="dialog-heading">
+          <span class="dialog-icon"
+            ><svg
+              class="icon"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M4 7h16M4 17h16" />
+              <circle cx="9" cy="7" r="3" />
+              <circle cx="15" cy="17" r="3" /></svg></span
+          ><button
+            class="icon-button"
+            value="cancel"
+            aria-label="Close project settings"
+            formnovalidate
+          >
+            <svg
+              class="icon"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="m6 6 12 12M6 18 18 6" />
+            </svg>
+          </button>
+        </div>
+        <h2 id="dialog-title">Project settings</h2>
+        <p>Keep the details in order. Get back to the work.</p>
+        <label for="dialog-project-name">Project name</label
+        ><input
+          id="dialog-project-name"
+          name="project"
+          value="Motion library"
+          required
+        /><label for="project-visibility">Visibility</label
+        ><select id="project-visibility" name="visibility">
+          <option>Private project</option>
+          <option>Public project</option>
+        </select>
+        <p class="dialog-note">Changes apply to this preview only.</p>
+        <div class="dialog-actions">
+          <button value="cancel" formnovalidate>Cancel</button
+          ><button class="primary" value="save">Save changes</button>
+        </div>
       </form>
     </dialog>
     <div id="copy-status" class="sr-only" role="status"></div>

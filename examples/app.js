@@ -98,6 +98,13 @@ function update() {
     $(`#code-${id}`).value = recipe.css(c);
   });
 }
+$("#reset-controls").addEventListener("click", () => {
+  controls.duration.value = "160";
+  controls.easing.value = "enter";
+  controls.distance.value = "12";
+  controls.motion.value = "system";
+  update();
+});
 Object.values(controls).forEach((control) =>
   control.addEventListener("input", update),
 );
@@ -143,12 +150,34 @@ function setToast(open) {
   toast.inert = !open;
   toast.classList.toggle("is-visible", open);
   $("#toast-announcement").textContent = open ? "Draft published." : "";
+  if (open) {
+    $("#publication-state").classList.add("is-published");
+    $("#publication-state").replaceChildren(
+      Object.assign(document.createElement("span"), {
+        className: "status-dot",
+      }),
+      document.createTextNode("Published"),
+    );
+  }
 }
 $("#toast-trigger")?.addEventListener("click", () => setToast(true));
 $("#toast-close")?.addEventListener("click", () => setToast(false));
 $("#dialog-trigger")?.addEventListener("click", () =>
   $("#settings-dialog").showModal(),
 );
+$("#settings-dialog").addEventListener("close", (event) => {
+  if (event.currentTarget.returnValue !== "save") return;
+  const name = $("#dialog-project-name").value.trim();
+  if (name && $(".project-preview-name"))
+    $(".project-preview-name").textContent = name;
+  if ($(".project-meta"))
+    $(".project-meta > span").replaceChildren(
+      Object.assign(document.createElement("span"), {
+        className: "status-dot",
+      }),
+      document.createTextNode($("#project-visibility").value),
+    );
+});
 $("#accordion-trigger")?.addEventListener("click", (event) => {
   const button = event.currentTarget;
   const open = button.getAttribute("aria-expanded") !== "true";
@@ -164,13 +193,16 @@ if (marker) {
   const resize = new ResizeObserver(() => {
     marker.style.setProperty(
       "--track-distance",
-      `${marker.parentElement.clientWidth - marker.offsetWidth}px`,
+      `${marker.parentElement.clientWidth - marker.offsetWidth - 8}px`,
     );
   });
   resize.observe(marker.parentElement);
   $("#continuity-trigger").addEventListener("click", (event) => {
     const end = marker.classList.toggle("at-end");
     event.currentTarget.setAttribute("aria-pressed", String(end));
+    $("#continuity-status").textContent = end
+      ? "Published · ready to share"
+      : "Draft · ready for another iteration";
   });
 }
 

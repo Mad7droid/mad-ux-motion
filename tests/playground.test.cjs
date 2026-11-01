@@ -5,7 +5,7 @@ const path = require("node:path");
 const { JSDOM } = require("jsdom");
 const root = path.join(__dirname, "..", "examples");
 
-function page(name, reduced = false) {
+function page(name, reduced = false, options = {}) {
   const dom = new JSDOM(fs.readFileSync(path.join(root, name), "utf8"), {
     runScripts: "outside-only",
     url: `https://example.test/${name}`,
@@ -13,13 +13,31 @@ function page(name, reduced = false) {
   });
   const w = dom.window;
   let onPreference;
+  let onAppearance;
+  const appearance = {
+    matches: Boolean(options.dark),
+    addEventListener: (_, callback) => {
+      onAppearance = callback;
+    },
+  };
   const media = {
     matches: reduced,
     addEventListener: (_, callback) => {
       onPreference = callback;
     },
   };
-  w.matchMedia = () => media;
+  w.matchMedia = (query) =>
+    query.includes("color-scheme") ? appearance : media;
+  if (options.storedTheme)
+    w.localStorage.setItem("ux-motion-theme", options.storedTheme);
+  if (options.blockStorage)
+    Object.defineProperty(w, "localStorage", {
+      get() {
+        throw new Error("Storage blocked");
+      },
+    });
+  w.eval(fs.readFileSync(path.join(root, "theme.js"), "utf8"));
+  w.document.dispatchEvent(new w.Event("DOMContentLoaded"));
   w.ResizeObserver = class {
     observe() {}
   };
@@ -49,6 +67,10 @@ function page(name, reduced = false) {
     change(selector, value) {
       $(selector).value = value;
       $(selector).dispatchEvent(new w.Event("input"));
+    },
+    appearance(value) {
+      appearance.matches = value;
+      onAppearance();
     },
     system(value) {
       media.matches = value;
@@ -175,21 +197,86 @@ test("copy writes the current prompt and offers selection when the clipboard is 
   p.dom.window.close();
 });
 
-test('page navigation, asset links, labels and controlled regions resolve', () => {
-  for (const name of ['index.html', 'surfaces.html', 'gestures.html']) {
+test("page navigation, asset links, labels and controlled regions resolve", () => {
+  for (const name of ["index.html", "surfaces.html", "gestures.html"]) {
     const p = page(name);
-    const ids = [...p.w.document.querySelectorAll('[id]')].map((node) => node.id);
+    const ids = [...p.w.document.querySelectorAll("[id]")].map(
+      (node) => node.id,
+    );
     assert.equal(new Set(ids).size, ids.length, `${name} has duplicate IDs`);
-    for (const element of p.w.document.querySelectorAll('label[for], [aria-controls]')) {
-      const target = element.getAttribute('for') || element.getAttribute('aria-controls');
-      assert.ok(p.w.document.getElementById(target), `${name}: missing ${target}`);
+    for (const element of p.w.document.querySelectorAll(
+      "label[for], [aria-controls]",
+    )) {
+      const target =
+        element.getAttribute("for") || element.getAttribute("aria-controls");
+      assert.ok(
+        p.w.document.getElementById(target),
+        `${name}: missing ${target}`,
+      );
     }
-    for (const element of p.w.document.querySelectorAll('a[href], link[href], script[src]')) {
-      const href = element.getAttribute('href') || element.getAttribute('src');
-      if (href.startsWith('https://')) continue;
-      if (href.startsWith('#')) assert.ok(p.w.document.getElementById(href.slice(1)));
-      else assert.ok(fs.existsSync(path.join(root, href)), `${name}: broken link ${href}`);
+    for (const element of p.w.document.querySelectorAll(
+      "a[href], link[href], script[src]",
+    )) {
+      const href = element.getAttribute("href") || element.getAttribute("src");
+      if (href.startsWith("https://")) continue;
+      if (href.startsWith("#"))
+        assert.ok(p.w.document.getElementById(href.slice(1)));
+      else
+        assert.ok(
+          fs.existsSync(path.join(root, href)),
+          `${name}: broken link ${href}`,
+        );
     }
     p.dom.window.close();
   }
+});
+
+test("appearance follows the system, persists explicit choices, and handles blocked storage", () => {
+  const p = page("index.html", false, { dark: true });
+  assert.equal(p.w.document.documentElement.dataset.theme, "dark");
+  assert.equal(
+    p.$('[data-theme-choice="system"]').getAttribute("aria-pressed"),
+    "true",
+  );
+  p.$('[data-theme-choice="light"] svg').dispatchEvent(
+    new p.w.MouseEvent("click", { bubbles: true }),
+  );
+  assert.equal(p.w.document.documentElement.dataset.theme, "light");
+  assert.equal(p.w.localStorage.getItem("ux-motion-theme"), "light");
+  p.appearance(false);
+  p.appearance(true);
+  assert.equal(p.w.document.documentElement.dataset.theme, "light");
+  p.$('[data-theme-choice="system"]').click();
+  assert.equal(p.w.document.documentElement.dataset.theme, "dark");
+  p.appearance(false);
+  assert.equal(p.w.document.documentElement.dataset.theme, "light");
+  p.dom.window.close();
+  const restored = page("surfaces.html", false, { storedTheme: "dark" });
+  assert.equal(restored.w.document.documentElement.dataset.theme, "dark");
+  assert.equal(
+    restored.$('[data-theme-choice="dark"]').getAttribute("aria-pressed"),
+    "true",
+  );
+  restored.dom.window.close();
+  const blocked = page("gestures.html", false, { blockStorage: true });
+  blocked.$('[data-theme-choice="dark"]').click();
+  assert.equal(blocked.w.document.documentElement.dataset.theme, "dark");
+  blocked.dom.window.close();
+});
+
+test("reset restores motion controls while preserving the independent appearance choice", () => {
+  const p = page("index.html");
+  p.change("#duration", "400");
+  p.change("#distance", "32");
+  p.change("#easing", "linear");
+  p.change("#motion", "reduce");
+  p.$('[data-theme-choice="dark"]').click();
+  p.$("#reset-controls").click();
+  assert.equal(p.$("#duration").value, "160");
+  assert.equal(p.$("#distance").value, "12");
+  assert.equal(p.$("#easing").value, "enter");
+  assert.equal(p.$("#motion").value, "system");
+  assert.equal(p.w.document.documentElement.dataset.theme, "dark");
+  assert.match(p.$("#prompt-press").value, /160ms enter, 120ms exit/);
+  p.dom.window.close();
 });
