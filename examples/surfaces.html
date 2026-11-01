@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Interactive UX Motion examples. Tune timing, easing, and distance, then copy a prompt for your coding agent."
+    />
+    <title>Surfaces · UX Motion playground</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to examples</a>
+    <aside class="sidebar">
+      <a class="brand" href="index.html"
+        ><span class="brand-mark" aria-hidden="true">m<span>↗</span></span
+        >ux / motion</a
+      >
+      <p class="sidebar-caption">THE INTERACTION PLAYGROUND</p>
+      <nav aria-label="Example categories">
+        <a href="index.html"
+          ><span>01</span>Feedback<span aria-hidden="true">↗</span></a
+        ><a href="surfaces.html" aria-current="page"
+          ><span>02</span>Surfaces<span aria-hidden="true">↗</span></a
+        ><a href="gestures.html"
+          ><span>03</span>Gestures<span aria-hidden="true">↗</span></a
+        >
+      </nav>
+      <div class="sidebar-bottom">
+        <p>A small field guide to<br />motion that earns its place.</p>
+        <a href="https://github.com/Mad7droid/mad-ux-motion"
+          >View the skill on GitHub ↗</a
+        ><span>BY MAD7DROID · OPEN SOURCE</span>
+      </div>
+    </aside>
+    <main id="main">
+      <header class="topline">
+        <span>UX MOTION <span class="slash">/</span> LIVE EXAMPLES</span
+        ><span class="live-badge"
+          ><span class="tiny-dot"></span> No dependencies. Just
+          interaction.</span
+        >
+      </header>
+      <section class="intro">
+        <div>
+          <p class="eyebrow">FEEL THE DIFFERENCE</p>
+          <h1>A place for<br />the next step.</h1>
+          <p class="lede">
+            Help people follow a surface as it appears, expands, and leaves.
+          </p>
+        </div>
+        <div class="intro-note">
+          <span aria-hidden="true">↳</span>
+          <p>Try it. Tune it.<br />Take the prompt with you.</p>
+        </div>
+      </section>
+      <section class="controls" aria-label="Motion configuration">
+        <div class="control duration-control">
+          <label for="duration"
+            >Duration
+            <output for="duration" id="duration-value">160 ms</output></label
+          ><input
+            id="duration"
+            type="range"
+            min="80"
+            max="400"
+            step="10"
+            value="160"
+          />
+        </div>
+        <div class="control">
+          <label for="easing">Easing</label
+          ><select id="easing">
+            <option value="enter">Decelerate / accelerate</option>
+            <option value="standard">Standard</option>
+            <option value="linear">Linear · compare</option>
+          </select>
+        </div>
+        <div class="control">
+          <label for="distance"
+            >Travel
+            <output for="distance" id="distance-value">12 px</output></label
+          ><input
+            id="distance"
+            type="range"
+            min="0"
+            max="32"
+            step="2"
+            value="12"
+          />
+        </div>
+        <div class="control">
+          <label for="motion">Motion preference</label
+          ><select id="motion">
+            <option value="system">Follow system</option>
+            <option value="reduce">Reduce motion</option>
+          </select>
+        </div>
+      </section>
+      <p class="config-note">
+        <span id="motion-status">Following your system preference.</span>
+        Controls update the demos, prompts, and CSS. Project tokens always win.
+      </p>
+      <section class="examples" aria-label="Interactive examples">
+        <article class="example" data-example="dialog" id="example-dialog">
+          <div class="example-heading">
+            <div>
+              <span class="eyebrow">EXPERIMENT 03</span>
+              <h2>Centered dialog</h2>
+            </div>
+            <span class="example-number">03</span>
+          </div>
+          <p>Keep the focus on the decision.</p>
+          <div class="preview">
+            <button id="dialog-trigger">
+              Open project settings <span aria-hidden="true">↗</span>
+            </button>
+            <div class="ghost-window" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </div>
+          </div>
+          <div class="preview-caption">
+            <span class="tiny-dot"></span>Native dialog · focus return · Escape
+          </div>
+          <details class="recipe">
+            <summary>
+              Prompt &amp; CSS recipe <span aria-hidden="true">+</span>
+            </summary>
+            <div class="recipe-body">
+              <label for="prompt-dialog">Copy into your coding agent</label
+              ><textarea
+                id="prompt-dialog"
+                class="prompt"
+                readonly
+                rows="6"
+                spellcheck="false"
+              ></textarea
+              ><button class="copy" data-copy="prompt-dialog">
+                Copy prompt <span aria-hidden="true">↗</span></button
+              ><label for="code-dialog"
+                >Motion CSS · component behavior stays in app.js</label
+              ><textarea
+                id="code-dialog"
+                class="code"
+                readonly
+                rows="7"
+                spellcheck="false"
+              ></textarea
+              ><button class="copy" data-copy="code-dialog">
+                Copy CSS <span aria-hidden="true">↗</span>
+              </button>
+            </div>
+          </details>
+        </article>
+        <article class="example" data-example="accordion" id="example-accordion">
+          <div class="example-heading">
+            <div>
+              <span class="eyebrow">EXPERIMENT 04</span>
+              <h2>Disclosure</h2>
+            </div>
+            <span class="example-number">04</span>
+          </div>
+          <p>Reveal the detail without losing the heading.</p>
+          <div class="preview">
+            <div class="accordion">
+              <button
+                id="accordion-trigger"
+                aria-expanded="false"
+                aria-controls="accordion-content"
+              >
+                What makes motion useful?<span
+                  class="chevron"
+                  aria-hidden="true"
+                  >+</span
+                >
+              </button>
+              <div
+                class="accordion-grid"
+                id="accordion-content"
+                inert
+                aria-hidden="true"
+              >
+                <div>
+                  <p>
+                    Motion earns its place when it explains a state change,
+                    acknowledges input, or preserves your place. Repeated
+                    actions should feel immediate.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="preview-caption">
+            <span class="tiny-dot"></span>Intrinsic height · layout work is
+            intentional
+          </div>
+          <details class="recipe">
+            <summary>
+              Prompt &amp; CSS recipe <span aria-hidden="true">+</span>
+            </summary>
+            <div class="recipe-body">
+              <label for="prompt-accordion">Copy into your coding agent</label
+              ><textarea
+                id="prompt-accordion"
+                class="prompt"
+                readonly
+                rows="6"
+                spellcheck="false"
+              ></textarea
+              ><button class="copy" data-copy="prompt-accordion">
+                Copy prompt <span aria-hidden="true">↗</span></button
+              ><label for="code-accordion"
+                >Motion CSS · component behavior stays in app.js</label
+              ><textarea
+                id="code-accordion"
+                class="code"
+                readonly
+                rows="7"
+                spellcheck="false"
+              ></textarea
+              ><button class="copy" data-copy="code-accordion">
+                Copy CSS <span aria-hidden="true">↗</span>
+              </button>
+            </div>
+          </details>
+        </article>
+      </section>
+      <section class="field-note">
+        <span class="eyebrow">A NOTE ON THE NUMBERS</span>
+        <p>
+          120–180ms is a starting point, not a rule. Slow things down to inspect
+          them. Keep the motion only when it helps explain what changed.
+        </p>
+        <a
+          href="https://github.com/Mad7droid/mad-ux-motion/blob/main/docs/usage.md"
+          >Read the usage guide ↗</a
+        >
+      </section>
+      <footer>
+        <span>Made to be tried, not just watched.</span
+        ><span>UX MOTION / SURFACES</span>
+      </footer>
+    </main>
+    <dialog id="settings-dialog" aria-labelledby="dialog-title">
+      <form method="dialog">
+        <div class="dialog-icon" aria-hidden="true">↗</div>
+        <p class="eyebrow">PROJECT SETTINGS</p>
+        <h2 id="dialog-title">Make room for focus.</h2>
+        <p>
+          This is a real modal dialog. Try Tab, Escape, or the close button.
+          Focus returns to the trigger.
+        </p>
+        <button class="primary">Done, back to work</button>
+      </form>
+    </dialog>
+    <div id="copy-status" class="sr-only" role="status"></div>
+  </body>
+</html>
