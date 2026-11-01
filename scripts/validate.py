@@ -31,7 +31,7 @@ for manifest in ('plugin.json', 'marketplace.json'):
     if manifest == 'plugin.json' and data.get('name') != SKILL.name:
         errors.append('Claude plugin name must match the skill name')
 for path in ROOT.rglob('*.md'):
-    if any(part.startswith('.') for part in path.relative_to(ROOT).parts):
+    if any(part.startswith('.') or part == 'node_modules' for part in path.relative_to(ROOT).parts):
         continue
     content = path.read_text()
     for target in re.findall(r'\[[^\]]*\]\(([^)]+)\)', content):
