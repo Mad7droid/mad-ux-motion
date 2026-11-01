@@ -37,7 +37,7 @@ The copy commands assume `ux-motion` is not already installed. Back up an existi
 
 ## Use it
 
-Invoke the skill explicitly: `$ux-motion` in Codex, `/ux-motion` in Claude Code. Claude Code also loads it automatically when a request matches the skill description.
+Invoke the skill explicitly: `$ux-motion` in Codex, `/ux-motion` in Claude Code (`/ux-motion:ux-motion` when installed as a plugin). Claude Code also loads it automatically when a request matches the skill description.
 
 ```text
 Use $ux-motion to polish this dropdown. Follow our existing tokens,

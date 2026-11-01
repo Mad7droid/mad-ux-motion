@@ -1,6 +1,6 @@
 # Using UX Motion
 
-Give the agent the component, intended behavior, and constraints. Examples use Codex's `$ux-motion`; in Claude Code, start the prompt with `/ux-motion` instead or just describe the motion task. Mention existing tokens or the animation library if they are not obvious in the repository. The agent should inspect project instructions before applying house defaults.
+Give the agent the component, intended behavior, and constraints. Examples use Codex's `$ux-motion`; in Claude Code, start the prompt with `/ux-motion` (or `/ux-motion:ux-motion` for the plugin) instead or just describe the motion task. Mention existing tokens or the animation library if they are not obvious in the repository. The agent should inspect project instructions before applying house defaults.
 
 ## Implement an interaction
 
