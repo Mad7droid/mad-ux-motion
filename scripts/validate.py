@@ -1,5 +1,6 @@
 """Validate the portable skill package and repository-local Markdown links."""
 from pathlib import Path
+import json
 import re
 import sys
 from urllib.parse import unquote
@@ -21,6 +22,14 @@ else:
 for required in ('REFERENCE.md', 'agents/openai.yaml'):
     if not (SKILL / required).is_file():
         errors.append(f'Missing skill resource: {required}')
+for manifest in ('plugin.json', 'marketplace.json'):
+    try:
+        data = json.loads((ROOT / '.claude-plugin' / manifest).read_text())
+    except (OSError, ValueError) as exc:
+        errors.append(f'Invalid Claude plugin manifest {manifest}: {exc}')
+        continue
+    if manifest == 'plugin.json' and data.get('name') != SKILL.name:
+        errors.append('Claude plugin name must match the skill name')
 for path in ROOT.rglob('*.md'):
     if any(part.startswith('.') for part in path.relative_to(ROOT).parts):
         continue

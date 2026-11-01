@@ -1,0 +1,8 @@
+{
+  "name": "ux-motion",
+  "description": "Design, implement, and review responsive, accessible UI motion.",
+  "version": "1.0.0",
+  "author": { "name": "Mad7droid", "url": "https://github.com/Mad7droid" },
+  "repository": "https://github.com/Mad7droid/mad-ux-motion",
+  "license": "MIT"
+}
