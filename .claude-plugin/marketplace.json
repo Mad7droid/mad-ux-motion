@@ -1,6 +1,11 @@
 {
   "name": "mad-ux-motion",
-  "owner": { "name": "Mad7droid" },
+  "owner": {
+    "name": "Mad7droid"
+  },
+  "metadata": {
+    "description": "Responsive, accessible UI motion skill for coding agents."
+  },
   "plugins": [
     {
       "name": "ux-motion",
