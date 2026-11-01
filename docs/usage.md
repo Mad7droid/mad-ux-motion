@@ -1,6 +1,6 @@
 # Using UX Motion
 
-Give the agent the component, intended behavior, and constraints. Mention existing tokens or the animation library if they are not obvious in the repository. The agent should inspect project instructions before applying house defaults.
+Give the agent the component, intended behavior, and constraints. Examples use Codex's `$ux-motion`; in Claude Code, start the prompt with `/ux-motion` (or `/ux-motion:ux-motion` for the plugin) instead or just describe the motion task. Mention existing tokens or the animation library if they are not obvious in the repository. The agent should inspect project instructions before applying house defaults.
 
 ## Implement an interaction
 
@@ -38,7 +38,7 @@ If the result feels wrong, describe a reproducible interaction: “open, close, 
 
 ## Installation troubleshooting
 
-- Not discovered: confirm the installed folder contains `SKILL.md` directly, not another nested `ux-motion` folder. Start a new agent session and invoke it explicitly.
+- Not discovered: confirm the installed folder (`~/.claude/skills/ux-motion` or `~/.codex/skills/ux-motion`) contains `SKILL.md` directly, not another nested `ux-motion` folder. In Claude Code, `/plugin` shows whether the plugin is enabled. Start a new agent session and invoke it explicitly.
 - Different output across agents: skill loading and tool capabilities vary. Supply the file path directly and ask the agent to confirm it read it.
 - Existing house style: project tokens override the suggested timings. Ask for specific departures explicitly.
 - Native platform: use the decision principles with platform APIs; the CSS and Pointer Events examples are web-specific.
