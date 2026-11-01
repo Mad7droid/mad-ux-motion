@@ -42,3 +42,7 @@ If the result feels wrong, describe a reproducible interaction: “open, close, 
 - Different output across agents: skill loading and tool capabilities vary. Supply the file path directly and ask the agent to confirm it read it.
 - Existing house style: project tokens override the suggested timings. Ask for specific departures explicitly.
 - Native platform: use the decision principles with platform APIs; the CSS and Pointer Events examples are web-specific.
+
+## Interactive examples
+
+Try [the motion playground](https://mad7droid.github.io/mad-ux-motion/) for configurable examples and prompts that reflect your selected settings. [The examples guide](examples.md) explains the demos, reduced-motion behavior, and local preview.

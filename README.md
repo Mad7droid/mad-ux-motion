@@ -67,6 +67,12 @@ Automatic discovery depends on your agent. You can also point an agent directly 
 
 The skill is framework-independent, with web-focused examples. It does not install a component library or guarantee accessibility compliance or smooth performance without testing.
 
+## Try the live examples
+
+[Open the motion playground](https://mad7droid.github.io/mad-ux-motion/) to try six interactive demos across feedback, surfaces, and gestures. Adjust duration, easing, and toast travel; preview reduced motion; then copy the matching prompt or CSS recipe.
+
+Run it locally with `python3 -m http.server 4173 --directory examples`, then open `http://localhost:4173`. No build or runtime dependencies are needed. See [the examples guide](docs/examples.md) for the demo list, testing, and publishing instructions.
+
 ## Documentation
 
 - [Usage and example prompts](docs/usage.md)
