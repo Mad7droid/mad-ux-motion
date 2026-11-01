@@ -1,0 +1,1 @@
+Read [AGENTS.md](AGENTS.md) for repository guidance, owner commit attribution, validation, and publishing instructions. Commit on behalf of the owner using the Mad7droid identity; do not append AI co-author trailers.
