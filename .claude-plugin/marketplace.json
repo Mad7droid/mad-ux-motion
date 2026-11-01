@@ -1,0 +1,11 @@
+{
+  "name": "mad-ux-motion",
+  "owner": { "name": "Mad7droid" },
+  "plugins": [
+    {
+      "name": "ux-motion",
+      "source": "./",
+      "description": "Design, implement, and review responsive, accessible UI motion."
+    }
+  ]
+}

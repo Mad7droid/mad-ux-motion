@@ -6,7 +6,26 @@ Functional UI starts around **120–180ms**. Your product's motion tokens take p
 
 ## Install
 
-Clone the repository, then copy the skill folder into your agent's skills directory:
+The same `skills/ux-motion` folder works in both Codex and Claude Code. `SKILL.md` follows the shared Agent Skills format; `agents/openai.yaml` adds Codex display metadata and Claude Code ignores it.
+
+### Claude Code
+
+Install as a plugin:
+
+```text
+/plugin marketplace add Mad7droid/mad-ux-motion
+/plugin install ux-motion@mad-ux-motion
+```
+
+Or copy the skill folder for personal use (use `.claude/skills` inside a repository to share it with a project):
+
+```sh
+git clone https://github.com/Mad7droid/mad-ux-motion.git
+mkdir -p ~/.claude/skills
+cp -R mad-ux-motion/skills/ux-motion ~/.claude/skills/ux-motion
+```
+
+### Codex
 
 ```sh
 git clone https://github.com/Mad7droid/mad-ux-motion.git
@@ -14,11 +33,11 @@ mkdir -p ~/.codex/skills
 cp -R mad-ux-motion/skills/ux-motion ~/.codex/skills/ux-motion
 ```
 
-The copy command assumes `ux-motion` is not already installed. Back up an existing folder before replacing it. If your agent uses a different skills directory, copy the same folder there. There are no runtime dependencies, API keys, or required motion libraries.
+The copy commands assume `ux-motion` is not already installed. Back up an existing folder before replacing it. If your agent uses a different skills directory, copy the same folder there. There are no runtime dependencies, API keys, or required motion libraries.
 
 ## Use it
 
-Explicitly invoke the installed skill in your coding agent:
+Invoke the skill explicitly: `$ux-motion` in Codex, `/ux-motion` in Claude Code. Claude Code also loads it automatically when a request matches the skill description.
 
 ```text
 Use $ux-motion to polish this dropdown. Follow our existing tokens,
@@ -26,7 +45,7 @@ keep keyboard behavior intact, and support reduced motion.
 ```
 
 ```text
-Use $ux-motion to audit the motion in src/components/Drawer.tsx.
+/ux-motion audit the motion in src/components/Drawer.tsx.
 Report concrete findings with file and line references before changing code.
 ```
 
@@ -59,6 +78,6 @@ The skill is framework-independent, with web-focused examples. It does not insta
 
 ## Update or remove
 
-Pull changes in your clone and replace the installed skill folder after backing up local edits. Installation is a snapshot, so pulling this repository alone does not update the installed copy. Remove the installed `ux-motion` folder to uninstall; application code generated using it is unaffected.
+Pull changes in your clone and replace the installed skill folder after backing up local edits. Installation is a snapshot, so pulling this repository alone does not update the installed copy. Plugin installs update through `/plugin`. Remove the installed `ux-motion` folder (or uninstall the plugin) to uninstall; application code generated using it is unaffected.
 
 Curated by [Mad7droid](https://github.com/Mad7droid).
