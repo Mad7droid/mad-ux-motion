@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Interactive UX Motion examples. Tune timing, easing, and distance, then copy a prompt for your coding agent."
+    />
+    <title>Feedback · UX Motion playground</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to examples</a>
+    <aside class="sidebar">
+      <a class="brand" href="index.html"
+        ><span class="brand-mark" aria-hidden="true">m<span>↗</span></span
+        >ux / motion</a
+      >
+      <p class="sidebar-caption">THE INTERACTION PLAYGROUND</p>
+      <nav aria-label="Example categories">
+        <a href="index.html" aria-current="page"
+          ><span>01</span>Feedback<span aria-hidden="true">↗</span></a
+        ><a href="surfaces.html"
+          ><span>02</span>Surfaces<span aria-hidden="true">↗</span></a
+        ><a href="gestures.html"
+          ><span>03</span>Gestures<span aria-hidden="true">↗</span></a
+        >
+      </nav>
+      <div class="sidebar-bottom">
+        <p>A small field guide to<br />motion that earns its place.</p>
+        <a href="https://github.com/Mad7droid/mad-ux-motion"
+          >View the skill on GitHub ↗</a
+        ><span>BY MAD7DROID · OPEN SOURCE</span>
+      </div>
+    </aside>
+    <main id="main">
+      <header class="topline">
+        <span>UX MOTION <span class="slash">/</span> LIVE EXAMPLES</span
+        ><span class="live-badge"
+          ><span class="tiny-dot"></span> No dependencies. Just
+          interaction.</span
+        >
+      </header>
+      <section class="intro">
+        <div>
+          <p class="eyebrow">FEEL THE DIFFERENCE</p>
+          <h1>Small actions.<br />Clear responses.</h1>
+          <p class="lede">
+            Make an action feel acknowledged without making anyone wait.
+          </p>
+        </div>
+        <div class="intro-note">
+          <span aria-hidden="true">↳</span>
+          <p>Try it. Tune it.<br />Take the prompt with you.</p>
+        </div>
+      </section>
+      <section class="controls" aria-label="Motion configuration">
+        <div class="control duration-control">
+          <label for="duration"
+            >Duration
+            <output for="duration" id="duration-value">160 ms</output></label
+          ><input
+            id="duration"
+            type="range"
+            min="80"
+            max="400"
+            step="10"
+            value="160"
+          />
+        </div>
+        <div class="control">
+          <label for="easing">Easing</label
+          ><select id="easing">
+            <option value="enter">Decelerate / accelerate</option>
+            <option value="standard">Standard</option>
+            <option value="linear">Linear · compare</option>
+          </select>
+        </div>
+        <div class="control">
+          <label for="distance"
+            >Travel
+            <output for="distance" id="distance-value">12 px</output></label
+          ><input
+            id="distance"
+            type="range"
+            min="0"
+            max="32"
+            step="2"
+            value="12"
+          />
+        </div>
+        <div class="control">
+          <label for="motion">Motion preference</label
+          ><select id="motion">
+            <option value="system">Follow system</option>
+            <option value="reduce">Reduce motion</option>
+          </select>
+        </div>
+      </section>
+      <p class="config-note">
+        <span id="motion-status">Following your system preference.</span>
+        Controls update the demos, prompts, and CSS. Project tokens always win.
+      </p>
+      <section class="examples" aria-label="Interactive examples">
+        <article class="example" data-example="press" id="example-press">
+          <div class="example-heading">
+            <div>
+              <span class="eyebrow">EXPERIMENT 01</span>
+              <h2>Press feedback</h2>
+            </div>
+            <span class="example-number">01</span>
+          </div>
+          <p>A little give. An immediate answer.</p>
+          <div class="preview">
+            <button class="primary press-target" id="save-button">
+              Save changes <span aria-hidden="true">↗</span>
+            </button>
+            <p class="demo-status" id="save-status" role="status">
+              Ready when you are.
+            </p>
+          </div>
+          <div class="preview-caption">
+            <span class="tiny-dot"></span>Color + scale · no positioning
+            transforms
+          </div>
+          <details class="recipe">
+            <summary>
+              Prompt &amp; CSS recipe <span aria-hidden="true">+</span>
+            </summary>
+            <div class="recipe-body">
+              <label for="prompt-press">Copy into your coding agent</label
+              ><textarea
+                id="prompt-press"
+                class="prompt"
+                readonly
+                rows="6"
+                spellcheck="false"
+              ></textarea
+              ><button class="copy" data-copy="prompt-press">
+                Copy prompt <span aria-hidden="true">↗</span></button
+              ><label for="code-press"
+                >Motion CSS · component behavior stays in app.js</label
+              ><textarea
+                id="code-press"
+                class="code"
+                readonly
+                rows="7"
+                spellcheck="false"
+              ></textarea
+              ><button class="copy" data-copy="code-press">
+                Copy CSS <span aria-hidden="true">↗</span>
+              </button>
+            </div>
+          </details>
+        </article>
+        <article class="example" data-example="toast" id="example-toast">
+          <div class="example-heading">
+            <div>
+              <span class="eyebrow">EXPERIMENT 02</span>
+              <h2>Status toast</h2>
+            </div>
+            <span class="example-number">02</span>
+          </div>
+          <p>Confirm the result. Keep the next action available.</p>
+          <div class="preview">
+            <button id="toast-trigger">
+              Publish a draft <span aria-hidden="true">↗</span>
+            </button>
+            <div class="toast" id="toast" inert>
+              <span class="status-dot"></span><span>Draft published</span
+              ><button id="toast-close" aria-label="Dismiss notification">
+                ×
+              </button>
+            </div>
+            <span class="sr-only" id="toast-announcement" role="status"></span>
+          </div>
+          <div class="preview-caption">
+            <span class="tiny-dot"></span>Opacity + translate · explicit
+            dismissal
+          </div>
+          <details class="recipe">
+            <summary>
+              Prompt &amp; CSS recipe <span aria-hidden="true">+</span>
+            </summary>
+            <div class="recipe-body">
+              <label for="prompt-toast">Copy into your coding agent</label
+              ><textarea
+                id="prompt-toast"
+                class="prompt"
+                readonly
+                rows="6"
+                spellcheck="false"
+              ></textarea
+              ><button class="copy" data-copy="prompt-toast">
+                Copy prompt <span aria-hidden="true">↗</span></button
+              ><label for="code-toast"
+                >Motion CSS · component behavior stays in app.js</label
+              ><textarea
+                id="code-toast"
+                class="code"
+                readonly
+                rows="7"
+                spellcheck="false"
+              ></textarea
+              ><button class="copy" data-copy="code-toast">
+                Copy CSS <span aria-hidden="true">↗</span>
+              </button>
+            </div>
+          </details>
+        </article>
+      </section>
+      <section class="field-note">
+        <span class="eyebrow">A NOTE ON THE NUMBERS</span>
+        <p>
+          120–180ms is a starting point, not a rule. Slow things down to inspect
+          them. Keep the motion only when it helps explain what changed.
+        </p>
+        <a
+          href="https://github.com/Mad7droid/mad-ux-motion/blob/main/docs/usage.md"
+          >Read the usage guide ↗</a
+        >
+      </section>
+      <footer>
+        <span>Made to be tried, not just watched.</span
+        ><span>UX MOTION / FEEDBACK</span>
+      </footer>
+    </main>
+    <dialog id="settings-dialog" aria-labelledby="dialog-title">
+      <form method="dialog">
+        <div class="dialog-icon" aria-hidden="true">↗</div>
+        <p class="eyebrow">PROJECT SETTINGS</p>
+        <h2 id="dialog-title">Make room for focus.</h2>
+        <p>
+          This is a real modal dialog. Try Tab, Escape, or the close button.
+          Focus returns to the trigger.
+        </p>
+        <button class="primary">Done, back to work</button>
+      </form>
+    </dialog>
+    <div id="copy-status" class="sr-only" role="status"></div>
+  </body>
+</html>
