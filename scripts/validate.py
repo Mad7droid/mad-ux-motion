@@ -22,7 +22,7 @@ for required in ('REFERENCE.md', 'agents/openai.yaml'):
     if not (SKILL / required).is_file():
         errors.append(f'Missing skill resource: {required}')
 for path in ROOT.rglob('*.md'):
-    if any(part.startswith('.') for part in path.relative_to(ROOT).parts):
+    if any(part.startswith('.') or part == 'node_modules' for part in path.relative_to(ROOT).parts):
         continue
     content = path.read_text()
     for target in re.findall(r'\[[^\]]*\]\(([^)]+)\)', content):
