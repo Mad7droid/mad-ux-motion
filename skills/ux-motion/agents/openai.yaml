@@ -1,0 +1,4 @@
+interface:
+  display_name: "UX Motion"
+  short_description: "Design and review responsive, accessible UI motion"
+  default_prompt: "Use $ux-motion to improve this interaction using project tokens, reduced-motion alternatives, and interruption-safe behavior."
