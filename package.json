@@ -1,0 +1,12 @@
+{
+  "name": "mad-ux-motion-examples",
+  "private": true,
+  "scripts": {
+    "test": "node --test tests/playground.test.cjs",
+    "check": "node --check examples/app.js",
+    "preview": "python3 -m http.server 4173 --directory examples --bind 127.0.0.1"
+  },
+  "devDependencies": {
+    "jsdom": "26.1.0"
+  }
+}
